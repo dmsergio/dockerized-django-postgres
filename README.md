@@ -1,4 +1,4 @@
-# dockerized-django-postgres
+# Django-PostgreSQL (Docker)
 Template repo to build a Django app with PostgreSQL inside docker containers.
 
 ## Project Setup
@@ -22,6 +22,8 @@ There are to modify a few lines inside **app/my_django_project/settings.py** fil
 environment variables set on **.env** file, which will be used to build and run Docker containers.
 
 ```python
+import os  # ensure to import os module
+
 SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = int(os.environ.get("DEBUG", default=0))
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
@@ -48,3 +50,19 @@ $ docker-compose build --pull
 $ docker-compose up -d
 ```
 
+## Run the project and other tips
+Run and stop de project
+```shell
+$ docker-comopose start
+$ docker-compose stop
+```
+Execute queries inside Postgres container
+```shell
+$ docker-compose exec db psql -U {POSTGRES_USER} -d {POSTGRES_DB}
+$ docker-compose exec db psql -U {POSTGRES_USER} -d {POSTGRES_DB} -c "\dt"
+```
+Flush and migrate the database
+```shell
+$ docker-compose exec web python manage.py flush --no-input
+$ docker-compose exec web python manage.py migrate
+```
