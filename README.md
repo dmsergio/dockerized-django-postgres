@@ -4,18 +4,24 @@ Template repo to build a Django app with PostgreSQL inside docker containers.
 ## Project Setup
 Inside root project, run the next commands:
 ```shell
-$ python3 -v venv env
+$ python3 -m venv env
 $ source env/bin/activate
 
 (env)$ pip install django
-(env)$ django-admin startproject my_django_project .
-(env)$ python manage.py migrate
-(env)$ python manage.py runserver
+(env)$ django-admin startproject my_django_project ./app/
+(env)$ cd app
+(env)$ python ./app/manage.py migrate
+(env)$ python ./app/manage.py runserver
 ```
 With this steps you will see the Django welcome screen at http://localhost:8000.
 
 This steps will create a SQLite file inside app directory. Remove that file, so will use PostgreSQL 
 for this project. Also deactivate virtual environment, and remove it.
+
+```shell
+(env)$ deactivate
+$ sudo rm -r env
+```
 
 ## Django Settings
 There are to modify a few lines inside **app/my_django_project/settings.py** file, in order to can use 
@@ -47,6 +53,7 @@ Once set all vars, run the next commands to build the Docker image, and run the 
 ```shell
 $ cp ./prject_files/* ./app/
 $ docker-compose build --pull
+$ docker-compose exec web python manage.py migrate --noinput
 $ docker-compose up -d
 ```
 
