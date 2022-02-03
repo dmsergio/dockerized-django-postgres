@@ -4,3 +4,7 @@
 
 # python compiled files
 *.pyc
+
+# project
+!app/.empty
+app/*
