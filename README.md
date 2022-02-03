@@ -9,7 +9,6 @@ $ source env/bin/activate
 
 (env)$ pip install django
 (env)$ django-admin startproject my_django_project ./app/
-(env)$ cd app
 (env)$ python ./app/manage.py migrate
 (env)$ python ./app/manage.py runserver
 ```
