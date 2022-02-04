@@ -6,5 +6,5 @@
 *.pyc
 
 # project
-!app/.empty
 app/*
+!app/.empty

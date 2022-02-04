@@ -1,5 +1,5 @@
 # Django-PostgreSQL (Docker)
-Template repo to build a Django app with PostgreSQL inside docker containers.
+Repo template to build a Django app with PostgreSQL inside docker containers.
 
 ## Project Setup
 Inside root project, run the next commands:
@@ -7,8 +7,8 @@ Inside root project, run the next commands:
 $ python3 -m venv env
 $ source env/bin/activate
 
-(env)$ pip install django
-(env)$ django-admin startproject my_django_project ./app/
+(env)$ pip install django==3.2.12
+(env)$ django-admin startproject {my_project} ./app/
 (env)$ python ./app/manage.py migrate
 (env)$ python ./app/manage.py runserver
 ```
@@ -23,7 +23,7 @@ $ sudo rm -r env
 ```
 
 ## Django Settings
-There are to modify a few lines inside **app/my_django_project/settings.py** file, in order to can use 
+There are to modify a few lines inside **app/{my_project}/settings.py** file, in order to can use
 environment variables set on **.env** file, which will be used to build and run Docker containers.
 
 ```python
@@ -46,13 +46,13 @@ DATABASES = {
 ```
 
 ## Docker Setup
-Ensure to set environment vars con **.env** file, such as project name, database name, database user, etc.
+Ensure to set environment vars on **.env** file, such as project name, database name, database user, etc.
 
 Once set all vars, run the next commands to build the Docker image, and run the containers.
 ```shell
 $ cp ./prject_files/* ./app/
 $ docker-compose build --pull
-$ docker-compose exec web python manage.py migrate --noinput
+$ docker-compose exec web python manage.py migrate
 $ docker-compose up -d
 ```
 
