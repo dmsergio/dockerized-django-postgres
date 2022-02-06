@@ -48,8 +48,8 @@ Once set all vars, run the next commands to build the Docker image, and run the 
 ```shell
 $ cp ./prject_files/* ./app/
 $ docker-compose build --pull
-$ docker-compose exec web python manage.py migrate
 $ docker-compose up -d
+$ docker-compose exec web python manage.py migrate
 ```
 
 ## Run the project and other tips
