@@ -9,13 +9,9 @@ $ source env/bin/activate
 
 (env)$ pip install django==3.2.12
 (env)$ django-admin startproject {my_project} ./app/
-(env)$ python ./app/manage.py migrate
-(env)$ python ./app/manage.py runserver
 ```
-With this steps you will see the Django welcome screen at http://localhost:8000.
 
-This steps will create a SQLite file inside app directory. Remove that file, so will use PostgreSQL 
-for this project. Also deactivate virtual environment, and remove it.
+You deactivate virtual environment, and remove it.
 
 ```shell
 (env)$ deactivate
